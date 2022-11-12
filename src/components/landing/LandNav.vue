@@ -2,7 +2,7 @@
     <div class="flex w-full bg-mainwhite sticky top-0 z-50 items-center py-6 justify-between px-[5%]">
         <div class="logo flex items-center">
             <h1 class="text-xl font-semibold relative">Travella
-                <v-icon size="14" class=" -rotate-45 text-mainblue absolute right-2 -top-1" icon="fas fa-plane" />
+                <v-icon size="14" class=" text-mainblue absolute right-2 -top-1" icon="fas fa-paper-plane" />
             </h1>
             <!-- <v-icon icon="fas fa-home" /> -->
         </div>

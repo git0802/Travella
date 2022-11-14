@@ -4,7 +4,14 @@
             <h1 class="text-xl font-semibold relative mx-auto">Travella
                 <v-icon size="14" class=" text-mainblue absolute right-2 -top-1" icon="fas fa-paper-plane" />
             </h1>
-            <h1 class="text-center text-mainblue font-semibold text-lg mt-4">Log into Travella</h1>
+            <h1 class="text-center text-mainblue font-semibold text-lg mt-4">Register to Travella</h1>
+            <p class="text-sm text-center">Join the travelling community and explore the world</p>
+            <div class="flex flex-col w-full mt-5">
+                <label for="">Full Names</label>
+                <input type="text"
+                    class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border border-gray-300 mt-2"
+                    v-model="names" placeholder="Email" />
+            </div>
             <div class="flex flex-col w-full mt-5">
                 <label for="">Email</label>
                 <input type="email"
@@ -21,7 +28,7 @@
             <button :disabled="isLoading"
                 :class="[isLoading && 'bg-mainblue/50', 'bg-mainblue  px-6 py-3 text-white rounded-lg mt-8']"
                 @click="onSubmit">
-                Login
+                Signup
             </button>
             <p class="textl-lg  text-center my-2">Or</p>
             <div className="flex justify-center">
@@ -32,7 +39,7 @@
             </div>
             <div className="flex w-full items-center justify-between mt-5">
                 <span>Don't have an account? </span>
-                <RouterLink to="/register" className="text-mainblue underline">Signup</RouterLink>
+                <RouterLink to="/login" className="text-mainblue underline">Login</RouterLink>
             </div>
         </form>
     </AuthLayoutVue>
@@ -41,13 +48,14 @@
 <script setup lang="ts">
 import AuthLayoutVue from '@/Layouts/AuthLayout.vue';
 import GoogleVue from '@/components/common/icons/Google.vue'
-import { ref, watch } from "vue";
+import { reactive, ref, watch } from "vue";
 import router from '@/router';
-import { RouterLink } from 'vue-router';
 
 const password = ref('');
 const email = ref('');
+const names = ref('');
 const error = ref('');
+
 const isLoading = ref(false);
 
 watch(
@@ -57,23 +65,27 @@ watch(
 
 const onSubmit = async (e: any) => {
     e.preventDefault();
-    if (email.value.trim() === '' || password.value.trim() === '') {
-        isLoading.value = false;
+    // set loading true
+    isLoading.value = true
+    if (!email.value || !password.value || !names.value) {
+        isLoading.value = false
         return error.value = 'Please fill all fields';
     }
     try {
-        const res = await fetch('http://localhost:3434/auth/login', {
+        const res = await fetch('http://localhost:3434/auth/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 email: email.value,
-                password: password.value
+                password: password.value,
+                names: names.value
             })
         })
 
         const data = await res.json();
+        isLoading.value = false
         console.log('data', data);
         if (data.data.token) {
             localStorage.setItem('token', data.data.token);
@@ -81,7 +93,7 @@ const onSubmit = async (e: any) => {
         }
     } catch (error) {
         console.log(error);
-        isLoading.value = false;
+        isLoading.value = false
     }
 }
 

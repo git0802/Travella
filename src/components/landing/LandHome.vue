@@ -11,10 +11,10 @@
                 Go ahead and book your next trip
                 <v-icon size="54" class=" -rotate-45 text-mainblue" icon="fas fa-plane" />
             </h1>
-            <button class=" bg-mainblue w-fit py-3 px-6 rounded-3xl text-white mt-4">
+            <RouterLink to="/register" class=" bg-mainblue w-fit py-3 px-6 rounded-3xl text-white mt-4">
                 Get Started
                 <v-icon size="14" class="ml-2" icon="fas fa-arrow-right" />
-            </button>
+            </RouterLink>
             <p class="text-xl mt-5 font-light">
                 We always make our custoomer happy by providing as many choices as possible
             </p>
@@ -48,4 +48,6 @@
 </template>
 
 <script lang="ts" setup>
+import { RouterLink } from 'vue-router';
+
 </script>

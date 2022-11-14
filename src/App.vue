@@ -1,14 +1,25 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
 import router from './router';
 import { useUserStore } from './stores/user';
+import { whiteList } from './utils';
 
 const { user } = useUserStore();
 
-if (!user) {
-  router.push('/landing');
-}
+router.beforeEach((to, from, next) => {
+  if (whiteList.includes(to.path)) {
+    console.log('whiteList.includes(to.path)', whiteList.includes(to.path));
+    next();
+  } else {
+    console.log('!whiteList.includes(to.path)', whiteList.includes(to.path));
+    if (user) {
+      next();
+    } else {
+      next('/login');
+    }
+  }
+});
+
 
 </script>
 

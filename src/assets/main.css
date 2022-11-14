@@ -13,5 +13,13 @@
  background: linear-gradient(45deg, #d7d0dd 0%, white 30%, #fcf5fa 100%);
  /* background-color: ; */
 }
+.auth{
+ background: linear-gradient(45deg, #d7d0dd 0%, white 30%, #fcf5fa 100%);
+ /* background: radial-gradient(
+    circle farthest-corner at 10% 20%,
+    #d7d0dd 0%,
+    white 30%,
+    #e9e7f4 100%
+ ); */
+}
 
-/* bg-gradient-to-b from-[#fcf5fa] via-white to-[#d7d0dd] */

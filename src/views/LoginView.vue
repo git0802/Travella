@@ -8,13 +8,13 @@
             <div class="flex flex-col w-full mt-5">
                 <label for="">Email</label>
                 <input type="email"
-                    class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border border-gray-300 mt-2"
+                    class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border-2 border-mainblue/30 border-solid mt-2"
                     v-model="email" placeholder="Email" />
             </div>
             <div class="flex flex-col w-full mt-5">
                 <label for="">Password</label>
                 <input v-model="password" type="password"
-                    class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border border-gray-300 mt-2"
+                    class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border-2 border-mainblue/30 border-solid mt-2"
                     placeholder="Password" />
             </div>
             <p class="mt-4 text-sm text-red-500 text-center" :ref="error">{{ error }}</p>
@@ -44,6 +44,11 @@ import GoogleVue from '@/components/common/icons/Google.vue'
 import { ref, watch } from "vue";
 import router from '@/router';
 import { RouterLink } from 'vue-router';
+import { api } from '@/utils';
+import { setCookie } from '@/utils/cookies';
+import { useUserStore } from '@/stores/user';
+
+const { setUser } = useUserStore()
 
 const password = ref('');
 const email = ref('');
@@ -62,25 +67,21 @@ const onSubmit = async (e: any) => {
         return error.value = 'Please fill all fields';
     }
     try {
-        const res = await fetch('http://localhost:3434/auth/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                email: email.value,
-                password: password.value
-            })
+        const res = await api.post('/auth/login', {
+            email: email.value,
+            password: password.value
         })
 
-        const data = await res.json();
+        const data = await res.data;
         console.log('data', data);
-        if (data.data.token) {
-            localStorage.setItem('token', data.data.token);
+        if (data.data) {
+            setCookie('access_token', data.data, 365);
+            setUser(data.user);
             router.push('/dashboard')
         }
-    } catch (error) {
-        console.log(error);
+    } catch (err: any) {
+        console.log(err);
+        error.value = err.response.data.message?? 'Something went wrong';
         isLoading.value = false;
     }
 }

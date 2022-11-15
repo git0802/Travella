@@ -1,16 +1,20 @@
+import { api } from './../utils/index';
+import { getCookie } from '@/utils/cookies';
 import { defineStore } from 'pinia';
 import { ref, computed } from 'vue';
 
 
 interface State {
     userList: UserInfo[]
-    user: UserInfo | null
+    user: UserInfo | null,
+    token: string | null,
 }
 
 export const useUserStore = defineStore('user', {
     state: (): State => ({
         userList: [],
         user: null,
+        token: getCookie('access_token'),
     }),
 
     getters: {
@@ -24,10 +28,13 @@ export const useUserStore = defineStore('user', {
             this.userList = userList;
         },
 
-        async fetchUser(id: number) {
-            const user: UserInfo | null = await fetchUser(id);
+        async fetchCurUser() {
+            const user: UserInfo | null = await fetchCurUser(this.token);
             this.user = user;
         },
+        setUser(user: any){
+            this.user = user;
+        }
     }
 })
 
@@ -42,6 +49,16 @@ function fetchUserList() {
 }
 
 
-function fetchUser(id: number) {
-    return 1 as any;
+async function fetchCurUser(token: string | null) {
+    try {
+        const res = await api.get('/users/me', {
+            headers: {
+                "authorization": token
+            }
+        })
+        return res.data.data??null
+    } catch (error) {
+        console.log(error);
+        return null
+    }
 }

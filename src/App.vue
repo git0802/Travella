@@ -4,10 +4,10 @@ import router from './router';
 import { useUserStore } from './stores/user';
 import { whiteList } from './utils';
 
-const { user, fetchCurUser } = useUserStore();
+const { fetchCurUser } = useUserStore();
 
 router.beforeEach( async(to, from, next) => {
-  await fetchCurUser();
+  const user = await fetchCurUser();
   if (whiteList.includes(to.path)) {
     console.log('whiteList.includes(to.path)', whiteList.includes(to.path));
     next();
@@ -25,8 +25,5 @@ router.beforeEach( async(to, from, next) => {
 </script>
 
 <template>
-  <header>
-
-  </header>
   <RouterView />
 </template>

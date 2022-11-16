@@ -31,6 +31,7 @@ export const useUserStore = defineStore('user', {
         async fetchCurUser() {
             const user: UserInfo | null = await fetchCurUser(this.token);
             this.user = user;
+            return user;
         },
         setUser(user: any){
             this.user = user;
@@ -51,9 +52,9 @@ function fetchUserList() {
 
 async function fetchCurUser(token: string | null) {
     try {
-        const res = await api.get('/users/me', {
+        const res = await api.get('/users/user/me', {
             headers: {
-                "authorization": token
+                "Authorization": token
             }
         })
         return res.data.data??null

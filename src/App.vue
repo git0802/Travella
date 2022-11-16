@@ -8,17 +8,17 @@ const { fetchCurUser } = useUserStore();
 
 router.beforeEach( async(to, from, next) => {
   const user = await fetchCurUser();
-  if (whiteList.includes(to.path)) {
-    console.log('whiteList.includes(to.path)', whiteList.includes(to.path));
+  if (whiteList.includes(to.path) && !user)
+    return next();
+  else if(user)
+    if(whiteList.includes(to.path))
+      return next('/dashboard');
+    else
+      return next();
+  else
+    if(!whiteList.includes(to.path))
+      return next('/');
     next();
-  } else {
-    console.log('!whiteList.includes(to.path)', whiteList.includes(to.path));
-    if (user) {
-      next();
-    } else {
-      next('/login');
-    }
-  }
 });
 
 

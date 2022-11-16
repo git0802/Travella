@@ -86,7 +86,7 @@ const onSubmit = async (e: any) => {
         console.log('data', data);
         if (data.data) {
             setCookie('access_token', data.data, 365);
-            router.push('/dashboard')
+            return window.location.href = '/dashboard'
         }
     } catch (err: any) {
         error.value = err.response.data.message?? 'Something went wrong';

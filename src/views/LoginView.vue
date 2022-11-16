@@ -62,6 +62,7 @@ watch(
 
 const onSubmit = async (e: any) => {
     e.preventDefault();
+    isLoading.value = true;
     if (email.value.trim() === '' || password.value.trim() === '') {
         isLoading.value = false;
         return error.value = 'Please fill all fields';
@@ -73,15 +74,16 @@ const onSubmit = async (e: any) => {
         })
 
         const data = await res.data;
-        console.log('data', data);
+        isLoading.value = false;
         if (data.data) {
             setCookie('access_token', data.data, 365);
             setUser(data.user);
-            router.push('/dashboard')
+            console.log(data.user);
+           return window.location.href='/dashboard'
         }
     } catch (err: any) {
         console.log(err);
-        error.value = err.response.data.message?? 'Something went wrong';
+        error.value = err.response?.data?.message?? 'Something went wrong';
         isLoading.value = false;
     }
 }

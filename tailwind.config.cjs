@@ -24,9 +24,8 @@ module.exports = {
       mainwhite: "#fbfbfe",
       secondary: "#fcf7fa",
       mainblue: "#411ef8",
+      active: "#1b2682",
     },
   },
-  plugins: [
-    require('tailwind-scrollbar-hide')
-  ],
+  plugins: [require("tailwind-scrollbar-hide")],
 };

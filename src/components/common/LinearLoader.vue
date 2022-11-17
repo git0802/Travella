@@ -29,7 +29,7 @@ export default {
         queryAndIndeterminate() {
 
             setTimeout(() => {
-                this.interval = setInterval(() => {
+                this.interval = window.setInterval(() => {
                     if (this.value === 98) {
                         this.stream = true;
                         clearInterval(this.interval);

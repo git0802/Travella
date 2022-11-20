@@ -6,7 +6,7 @@
                 Explore the world
                 <v-icon size="14" class="ml-2" icon="fas fa-arrow-right" />
             </button>
-            <h1 class="text-4xl xtab:text-[3em] font-bold mt-11 leading-relaxed">
+            <h1 class="text-2xl xtab:text-[3em] font-bold mt-11 leading-relaxed">
                 It's time to travel the world with Travella,
                 Go ahead and book your next trip
                 <v-icon size="54" class=" -rotate-45 text-mainblue" icon="fas fa-plane" />

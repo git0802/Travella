@@ -1,14 +1,14 @@
 <template>
-    <div class="flex flex-col max-w-[400px] xs:min-w-[280px]">
+    <div class="flex flex-col max-w-[400px] xs:min-w-[280px] min-w-[200px]">
         <div class="flex relative w-full overflow-hidden rounded-2xl">
             <img class="object-cover w-full" :src="placeImage" alt="">
-            <button class="absolute top-2 right-2 bg-white text-mainblue rounded-2xl font-semibold p-2 shadow-xl">
+            <button class="absolute top-2 right-2 bg-white text-mainblue rounded-2xl font-semibold p-2 shadow-xl xs:text-base text-xs">
                $ {{placePrice}}
             </button>
         </div>
         <div class="flex flex-col">
-            <h1 class="text-xl font-semibold">{{placeName}}</h1>
-            <p class="font-semibold">{{ shortDescription}}</p>
+            <h1 class="xs:text-xl font-semibold">{{placeName}}</h1>
+            <p class="font-semibold xs:text-base text-xs">{{ shortDescription}}</p>
         </div>
     </div>
 </template>

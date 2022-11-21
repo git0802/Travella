@@ -1,8 +1,8 @@
 <template>
-    <div class="flex w-full px-[5%] py-11 bg-gradient-to-r from-[#dedce0] via-white to-[#fcf5fa] items-center">
-        <div class="flex flex-col w-1/2">
+    <div class="flex w-full tablet:px-[5%] tablet:py-11 bg-gradient-to-r from-[#dedce0] via-white to-[#fcf5fa] items-center relative">
+        <div class="flex tablet:py-0 py-5 flex-col md:w-1/2 tablet:w-2/3 w-full z-[5] bg-gradient-to-r px-3 tablet:px-0 h-full from-[#dedce0] via-white/70 to-[#fcf5fa]/50 md:bg-none">
             <h1 class="text-xl font-semibold text-mainblue">WHAT THEY SAY</h1>
-            <h1 class="text-4xl font-bold mt-4">What Our Customer Say About Us &#128522;</h1>
+            <h1 class="md:text-4xl text-xl font-bold mt-4">What Our Customer Say About Us &#128522;</h1>
             <p class="textlg font-light mt-8">
                 "I'm a traveller and Travella helped me to find the best places to visit and the best hotels to stay in. I'm very happy with the service and I will use it again."
             </p>
@@ -18,8 +18,8 @@
                 <v-icon size="14" icon="fa fa-star" />
             </div>
         </div>
-        <div class="flex w-1/2">
-            <img src="/says.png" alt="">
+        <div class="flex phone:w-1/2 w-full md:static absolute right-0">
+            <img class="max-h-full" src="/says.png" alt="">
         </div>
     </div>
 </template>

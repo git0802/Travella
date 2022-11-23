@@ -1,13 +1,32 @@
 <script setup lang="ts">
 import DashLayoutVue from '@/Layouts/DashLayout.vue';
 import FeedVue from '@/components/dashboard/Feed.vue';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import { handlePermission } from '@/utils/permissions';
+import type { Location } from "@/utils/types";
+import { usePlaceStore } from '@/stores/places';
+
+const { getFetchedNearby, nearby } = usePlaceStore()
 
 const linear = ref(false);
 
 const setLinear = (val: boolean) => {
   linear.value = val;
 };
+
+onMounted(async () => {
+  const isLocationGranted = await handlePermission('geolocation');
+  let location: Location;
+  if (isLocationGranted) {
+    console.log('Location granted');
+    navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position);
+      location = { lat: position.coords.latitude, lng: position.coords.longitude }
+      if (nearby.length === 0) getFetchedNearby(location);
+    });
+  }
+})
+
 </script>
 <template>
   <DashLayoutVue :linear="linear" :setLinear="setLinear">

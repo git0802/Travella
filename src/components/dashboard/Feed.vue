@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col w-full text-sm mt-3">
+    <div class="flex flex-col w-full text-sm mt-3 overflow-y-auto h-[80vh]">
         <h1 class="text-lg font-semibold">Hotels</h1>
         <div class="flex w-full items-center justify-between">
             <div class="flex items-center gap-x-4">
@@ -12,11 +12,20 @@
                 <v-icon icon="fa fa-chevron-right" size="10" class="ml-1" />
             </button>
         </div>
-        <div class="grid scrollbar-hide grid-flow-col w-full mt-4 gap-3 overflow-x-auto px-1">
+        <div class="grid grid-flow-col w-full mt-4 overflow-scroll gap-3 h-[40vh] px-1">
             <PlaceCardVue v-for="place in places" :key="place.id" :placeName="place.name" :placeImage="place.image"
                 :placeDescription="place.description" :placePrice="place.price" :shortDescription="place['short-desc']"
                 :location="place.location" />
 
+        </div>
+        <div class="flex flex-col w-full">
+            <h1 class="mt-8 text-lg font-semibold">Nearby Places</h1>
+            <div class="grid md:grid-cols-4 phone:grid-cols-2 gap-3 w-full">
+                <div v-for="near in nearby" :key="near.id" class="mt-6">
+                    <p>{{ near.name }}</p>
+                    <p>{{ near.address }}</p>
+                </div>
+            </div>
         </div>
         <div class="flex w-full">
             <div class="flex flex-col">
@@ -28,5 +37,8 @@
 <script lang="ts" setup>
 import { places } from '../common/data';
 import PlaceCardVue from '../common/PlaceCard.vue';
+import { usePlaceStore } from '@/stores/places';
+
+const { nearby } = usePlaceStore()
 
 </script>

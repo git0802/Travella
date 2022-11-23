@@ -6,17 +6,17 @@
                 Explore the world
                 <v-icon size="14" class="ml-2" icon="fas fa-arrow-right" />
             </button>
-            <h1 class="text-2xl md:px-0 px-3 xtab:text-[3em] font-bold mt-11 leading-relaxed">
+            <h1 class="text-2xl md:text-start md:px-0 px-3 xtab:text-[3em] font-bold mt-11 leading-relaxed">
                 It's time to travel the world with Travella,
                 Go ahead and book your next trip
-                <v-icon size="" class=" -rotate-45 text-mainblue xtab:text-4xl" icon="fas fa-plane" />
+                <v-icon size="" class="-rotate-45 text-mainblue xtab:text-4xl" icon="fas fa-plane" />
             </h1>
             <RouterLink to="/register" class=" bg-mainblue w-fit py-3 px-6 rounded-3xl text-white mt-4">
                 Get Started
                 <v-icon size="14" class="ml-2" icon="fas fa-arrow-right" />
             </RouterLink>
             <p class="text-xl mt-5 font-light md:px-0 px-3 text-center md:text-start">
-                We always make our custoomer happy by providing as many choices as possible
+                We always make our customer happy by providing as many choices as possible
             </p>
             <div class="py-4 px-7 bg-white shadow-xl rounded-[3em] mt-6 flex items-center justify-between five:flex-row flex-col">
                 <div class="flex items-center">

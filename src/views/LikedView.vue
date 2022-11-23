@@ -1,7 +1,7 @@
 <template>
-    <DashLayoutVue :active="`account`" :linear="linear" :set-linear="setLinear">
+    <DashLayoutVue :active="`saved`" :linear="linear" :set-linear="setLinear">
         <div class="flex w-full">
-            Account
+            Liked
         </div>
     </DashLayoutVue>
 </template>

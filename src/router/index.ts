@@ -14,14 +14,24 @@ const router = createRouter({
       component: () => import('../views/LandingView.vue'),
     },
     {
+      path: '/notifications',
+      name: 'notifications',
+      component: () => import('../views/NotificationView.vue'),
+    },
+    {
       path: '/account',
       name: 'account',
       component: () => import('../views/AccountView.vue'),
     },
     {
-      path: "/about",
-      name: "about",
-      component: () => import("../views/AboutView.vue"),
+      path: "/saved",
+      name: "saved",
+      component: () => import("../views/LikedView.vue"),
+    },
+    {
+      path: "/settings",
+      name: "settings",
+      component: () => import("../views/SettingsView.vue"),
     },
     {
       path: '/landing',

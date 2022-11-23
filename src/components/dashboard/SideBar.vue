@@ -24,13 +24,13 @@ const navigate = (path: string) => {
                 <v-icon size="14" class=" text-mainblue absolute xtab:right-2 right-0 -top-1" icon="fas fa-paper-plane" />
             </h1>
             <div class="mt-11 flex flex-col">
-                <button @click="() => navigate('/home')"
+                <button @click="() => navigate('/dashboard')"
                     :class="`flex rounded-lg w-fit xtab:w-[unset] hover:bg-active hover:text-white duration-300 mt-1 items-center px-3 py-2 ${active === 'home' && 'bg-active text-white'}`">
                     <v-icon size="14" :class="active === 'home' ? 'text-white' : `text`" icon="fas fa-home" />
                     <p class="ml-4 truncate text-sm xtab:flex hidden items-end">Home</p>
                 </button>
                 <button @click="() => navigate('/notifications')"
-                    :class="`flex rounded-lg w-fit xtab:w-[unset] hover:bg-active hover:text-white duration-300 mt-1 items-center px-3 py-2 ${active === 'notification' && 'bg-active text-white'}`">
+                    :class="`flex rounded-lg w-fit xtab:w-[unset] hover:bg-active hover:text-white duration-300 mt-1 items-center px-3 py-2 ${active === 'notifications' && 'bg-active text-white'}`">
                     <v-icon size="14" :class="active === 'notification' ? 'text-white' : `text`" icon="fas fa-bell" />
                     <p class="ml-4 truncate text-sm xtab:flex hidden items-end">Notification</p>
                 </button>

@@ -1,8 +1,6 @@
 <template>
-    <DashLayoutVue :active="`account`" :linear="linear" :set-linear="setLinear">
-        <div class="flex w-full">
-            Account
-        </div>
+    <DashLayoutVue :active="`settings`" :linear="linear" :set-linear="setLinear">
+
     </DashLayoutVue>
 </template>
 

@@ -34,11 +34,11 @@
             <div className="flex justify-center">
                 <div className="rounded-md  mr-2 flex items-center bg-white pr-3 border-2 hover:shadow cursor-pointer">
                     <GoogleVue />
-                    <span>Sign in with Google</span>
+                    <span class="truncate text-sm">Sign in with Google</span>
                 </div>
             </div>
-            <div className="flex w-full items-center justify-between mt-5">
-                <span>Don't have an account? </span>
+            <div className="flex text-sm w-full items-center justify-between mt-5">
+                <span >Don't have an account? </span>
                 <RouterLink to="/login" className="text-mainblue underline">Login</RouterLink>
             </div>
         </form>

@@ -5,7 +5,7 @@
         </div>
         <div @click="toggleMenu" :class="`flex top-0 left-0 bottom-0 fixed right-0 xtab:hidden ${!isMobile&&'hidden'}`"></div>
         <div
-            :class="`flex xtab:static absolute xtab:flex-row flex-col items-center justify-between w-full bg-inherit xtab:py-0 py-11 left-0 ${isMobile ? 'top-0' : '-top-[1000px]'} duration-500`">
+            :class="`flex xtab:static absolute xtab:flex-row flex-col items-center justify-between w-full bg-inherit py-11 left-0 ${isMobile ? 'top-0' : '-top-[1000px]'} xtab:py-0 duration-500`">
             <div class="logo xtab:static fixed left-[5%] top-6  flex items-center">
                 <h1 class="text-xl font-semibold relative">Travella
                     <v-icon size="14" class=" text-mainblue absolute right-2 -top-1" icon="fas fa-paper-plane" />

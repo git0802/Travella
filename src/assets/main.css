@@ -10,20 +10,11 @@
 
 .mdgra{
  background: linear-gradient(45deg, #d7d0dd 0%, white 30%, #fcf5fa 100%);
- /* background-color: ; */
 }
 .mdgra1{
  background: linear-gradient(to left top, #d7d0dd 0%, white 30%, #cecbd0 100%);
- /* background-color: ; */
 }
 .auth{
  background: linear-gradient(45deg, #d7d0dd 0%, white 30%, #fcf5fa 100%);
- /* background: radial-gradient(
-    circle farthest-corner at 10% 20%,
-    #d7d0dd 0%,
-    white 30%,
-    #e9e7f4 100%
- ); */
- /* color: #421ef886; */
 }
 

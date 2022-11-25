@@ -1,13 +1,13 @@
 <template>
-    <div class="flex flex-col w-full text-sm mt-3 overflow-y-auto h-[80vh]">
+    <div class="flex flex-col w-full text-sm mt-3 overflow-y-auto h-[87vh] overflow-x-hidden">
         <h1 class="text-lg font-semibold">Hotels</h1>
         <div class="flex w-full items-center justify-between">
-            <div class="flex items-center gap-x-4">
+            <div class="flex items-center gap-x-4 truncate">
                 <h4 class="text-sm cursor-pointer font-semibold border-b-2 border-mainblue/80 py-1">Most Popular</h4>
-                <h4 class="text-sm cursor-pointer font-semibold py-1">Best Price</h4>
-                <h4 class="text-sm cursor-pointer font-semibold py-1">Near Me</h4>
+                <h4 class="text-sm five:flex hidden cursor-pointer font-semibold py-1">Best Price</h4>
+                <h4 class="text-sm five:flex hidden cursor-pointer font-semibold py-1">Near Me</h4>
             </div>
-            <button class="flex items-center">
+            <button class="flex items-center truncate">
                 See all
                 <v-icon icon="fa fa-chevron-right" size="10" class="ml-1" />
             </button>
@@ -20,8 +20,8 @@
         </div> -->
         <div class="flex flex-col w-full">
             <h1 class="mt-8 text-lg font-semibold">Nearby Places</h1>
-            <div class="grid laptop:grid-cols-3 phone:grid-cols-2 gap-3 w-full">
-                <PlaceCardVue v-for="near in places" :key="near.id" :place="near" class="mt-6"
+            <div class="grid fourk:grid-cols-6 large:grid-cols-4 laptop:grid-cols-3 five:grid-cols-2 gap-3 w-full">
+                <PlaceCardVue v-for="near in nearby" :key="near.id" :place="near" class="mt-6"
                 />
             </div>
         </div>
@@ -36,12 +36,14 @@
 import { places } from '../common/data';
 import PlaceCardVue from '../common/PlaceCard.vue';
 import { usePlaceStore } from '@/stores/places';
-import { computed, ref, watch } from 'vue';
+// import { computed, ref, watch } from 'vue';
+import { storeToRefs } from 'pinia';
 
 const placesStore = usePlaceStore()
-// const places = ref(nearby);
 
-const places = computed(() => placesStore.nearby);
+const { nearby } = storeToRefs(placesStore);
+ 
+// const places = computed(() => placesStore.nearby);
 
 
 </script>

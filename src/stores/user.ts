@@ -1,8 +1,7 @@
 import { api } from './../utils/index';
 import { getCookie } from '@/utils/cookies';
 import { defineStore } from 'pinia';
-import { ref, computed } from 'vue';
-
+import type { UserInfo } from '@/utils/types';
 
 interface State {
     userList: UserInfo[]
@@ -38,12 +37,6 @@ export const useUserStore = defineStore('user', {
         }
     }
 })
-
-interface UserInfo {
-    name: string
-    age: number,
-    email: string
-}
 
 function fetchUserList() {
     return 1 as any;

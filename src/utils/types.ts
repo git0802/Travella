@@ -2,6 +2,15 @@ export interface PlaceRes {
     results: PlaceRes[];
 }
 
+export interface UserInfo {
+    _id: string;
+    names: string;
+    email: string;
+    role: string;
+    createdAt: Date;
+    updatedAt: Date;
+    __v: number;
+}
 export interface PlaceRes {
     id: string;
     name: string;

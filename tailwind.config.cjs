@@ -13,6 +13,8 @@ module.exports = {
       xtab: "960px",
       laptop: "1100px",
       desktop: "1280px",
+      large: "1520px",
+      fourk: "3840px",
     },
     fontFamily: {
       oxa: ["Oxanium", "sans-serif"],

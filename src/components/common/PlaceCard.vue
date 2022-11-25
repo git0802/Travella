@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col max-w-[350px] xs:min-w-[230px] min-w-[200px]">
+    <div class="flex flex-col five:max-w-[350px] max-w-[300px] w-full mx-auto tablet:min-w-[230px] min-w-[180px]">
         <div class="flex relative w-full overflow-hidden rounded-2xl">
             <img class="object-cover w-full" src="http://www.bridgesdb.com/images/bridgesdb/picture-of-rialto-bridge-2011.jpg" alt="">
             <button class="absolute top-2 right-2 bg-white text-mainblue rounded-2xl font-semibold p-2 shadow-xl xs:text-base text-xs">

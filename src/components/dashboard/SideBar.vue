@@ -16,7 +16,7 @@ const navigate = (path: string) => {
 </script>
 
 <template>
-    <div class="flex flex-col py-3 justify-between border-r-2 border-[#d6d3da] pr-1">
+    <div class="flex flex-col py-3 justify-between border-r-2 border-[#d6d3da] px-1">
         <div class="flex flex-col">
             <h1 class="text-xl flex font-semibold relative truncate">
                 <span class="xtab:flex hidden"> Travella</span>

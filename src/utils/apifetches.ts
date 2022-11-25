@@ -21,7 +21,7 @@ export const fetchPlaces = async (query: string) => {
 }
 
 export const fetcNearby = async (query: string) => {
-    const url = `https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=${query}&radius=5000&language=en`;
+    const url = `https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=${query}&radius=50000&language=en`;
     const res = await fetch(url);
     return res;
 }

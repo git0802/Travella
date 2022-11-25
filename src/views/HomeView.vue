@@ -31,7 +31,7 @@ onMounted(async () => {
 <template>
   <DashLayoutVue :linear="linear" :setLinear="setLinear">
     <div class="flex w-full">
-      <div class="flex flex-col w-full px-6">
+      <div class="flex flex-col w-full pl-6">
         <div class="flex w-full items-center justify-between">
           <div class="flex flex-col">
             <h1 class="font-semibold text-xl">Hello, Sobuj</h1>

@@ -27,7 +27,7 @@ export const usePlaceStore = defineStore('places', {
                 const res: PlaceRes = await fetcNearby(locText);
                 this.nearby = res.results;
                 console.log(res);
-                
+                return res.results;
             } catch (error) {
                 console.log(error);
                 this.error = true;

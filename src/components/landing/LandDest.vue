@@ -8,9 +8,7 @@
                 <v-icon class="" size="19" icon="fas fa-chevron-left" />
             </button>
             <div id="scroller" class="grid scrollbar-hide grid-flow-col w-full mt-4 gap-3 overflow-x-auto px-1">
-                <PlaceCardVue v-for="place in places" :key="place.id" :placeName="place.name" :placeImage="place.image"
-                    :placeDescription="place.description" :placePrice="place.price"
-                    :shortDescription="place['short-desc']" :location="place.location" />
+                <PlaceCardVue v-for="place in places" :key="place.id" :place="place" />
 
             </div>
             <button @click="() => scroll('right')"

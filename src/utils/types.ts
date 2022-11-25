@@ -1,6 +1,3 @@
-export interface PlaceRes {
-    results: PlaceRes[];
-}
 
 export interface UserInfo {
     _id: string;
@@ -16,7 +13,9 @@ export interface PlaceRes {
     name: string;
     address: string;
     location: Location;
-    types: string[];
+    image: string;
+    price: any;
+    types?: string[];
 }
 
 export interface Location {

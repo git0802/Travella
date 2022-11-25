@@ -13,16 +13,17 @@ const navigate = (path: string) => {
     router.push(path);
 }
 
+const goHome = ()=> router.push('/dashboard')
+
 </script>
 
 <template>
     <div class="flex flex-col py-3 justify-between border-r-2 border-[#d6d3da] px-1">
         <div class="flex flex-col">
-            <h1 class="text-xl flex font-semibold relative truncate">
-                <span class="xtab:flex hidden"> Travella</span>
-                <span class="xtab:hidden">T</span>
-                <v-icon size="14" class=" text-mainblue absolute xtab:right-2 right-0 -top-1" icon="fas fa-paper-plane" />
-            </h1>
+            <div @click="goHome" class="flex cursor-pointer">
+                <img class="w-[80px] mx-auto xtab:flex hidden" src="/logo.svg" alt="">
+                <img class="w-[30px] mx-auto xtab:hidden" src="/favicon.svg" alt="">
+            </div>
             <div class="mt-11 flex flex-col">
                 <button @click="() => navigate('/dashboard')"
                     :class="`flex rounded-lg w-fit xtab:w-[unset] hover:bg-active hover:text-white duration-300 mt-1 items-center px-3 py-2 ${active === 'home' && 'bg-active text-white'}`">

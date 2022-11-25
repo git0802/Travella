@@ -3,10 +3,11 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
+* {
     font-family: 'poppins', sans-serif;
     scroll-behavior: smooth;
 }
+
 body {
     -ms-overflow-style: none !important;
     scrollbar-width: none !important;
@@ -15,13 +16,22 @@ body {
 body::-webkit-scrollbar {
     display: none !important;
 }
-.mdgra{
- background: linear-gradient(45deg, #d7d0dd 0%, white 30%, #fcf5fa 100%);
-}
-.mdgra1{
- background: linear-gradient(to left top, #d7d0dd 0%, white 30%, #cecbd0 100%);
-}
-.auth{
- background: linear-gradient(45deg, #d7d0dd 0%, white 30%, #fcf5fa 100%);
+
+.mdgra {
+    background: linear-gradient(45deg, #d7d0dd 0%, white 30%, #fcf5fa 100%);
 }
 
+.mdgra1 {
+    background: linear-gradient(to left top, #d7d0dd 0%, white 30%, #cecbd0 100%);
+}
+
+.auth {
+    background: linear-gradient(45deg, #d7d0dd 0%, white 30%, #fcf5fa 100%);
+}
+
+@media (min-width: 960px) {
+    .py-0 {
+        padding-top: 0px !important;
+        padding-bottom: 0px !important;
+    }
+}

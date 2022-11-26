@@ -13,7 +13,7 @@ export interface PlaceRes {
     name: string;
     address: string;
     location: Location;
-    image: string;
+    image: string | null;
     price: any;
     types?: string[];
 }
@@ -29,4 +29,5 @@ export interface PlaceState {
     place: PlaceRes | null,
     loading: boolean,
     error: boolean,
+    acceptedLoc: boolean,
 }

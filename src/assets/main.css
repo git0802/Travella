@@ -35,3 +35,36 @@ body::-webkit-scrollbar {
         padding-bottom: 0px !important;
     }
 }
+.panim{
+    background-color: #dcd6dc;
+    overflow: hidden;
+}
+.anim {
+    position: absolute;
+    top: 0;
+    left: 0;
+    --tw-bg-opacity: 1;
+    width: 100%;
+    background: linear-gradient(to right, #dcd6dc 10%, #cbc7cb 50%, #dcd6dc 90%);
+    animation: loaderSwipeAnim 1s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
+    height: 100%;
+}
+
+.animc {
+    width: 100%;
+    /* height: 120; */
+    overflow: hidden;
+    --tw-bg-opacity: 1;
+    background-color: rgb(41 37 36 / var(--tw-bg-opacity))
+        /* background-color: rgb(28 25 23 / var(--tw-bg-opacity)); */
+}
+
+@keyframes loaderSwipeAnim {
+    0% {
+        left: -100%;
+    }
+
+    100% {
+        left: 100%;
+    }
+}

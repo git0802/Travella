@@ -13,3 +13,18 @@ export async function handlePermission(permission: PermissionName) {
     });
     return state;
 }
+
+export function errorFunction() {
+    localStorage['authorizedGeoLocation'] = 0;
+}
+
+export function checkauthorizedGeoLocation() { // you can use this function to know if geoLocation was previously allowed
+    if (typeof localStorage['authorizedGeoLocation'] == "undefined" || localStorage['authorizedGeoLocation'] == "0")
+        return false;
+    else
+        return true;
+}
+
+export const storeAcceptedGeoLocation = () => {
+    localStorage['authorizedGeoLocation'] = 1;
+}

@@ -3,11 +3,12 @@ import { RouterView } from 'vue-router'
 import router from './router';
 import { useUserStore } from './stores/user';
 import { whiteList } from './utils';
+import { getCookie } from './utils/cookies';
 
 const { fetchCurUser } = useUserStore();
 
 router.beforeEach( async(to, from, next) => {
-  const user = await fetchCurUser();
+   const user = await fetchCurUser();
   if (whiteList.includes(to.path) && !user)
     return next();
   else if(user)

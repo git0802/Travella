@@ -1,6 +1,11 @@
 <template>
     <DashLayoutVue :active="`notifications`" :linear="linear" :set-linear="setLinear">
-
+        <div class="p-3">
+            <h1 class="font-semibold text-lg">Notifications</h1>
+            <div class="">
+                <p class="text-sm">No new notifications</p>
+            </div>
+        </div>
     </DashLayoutVue>
 </template>
 

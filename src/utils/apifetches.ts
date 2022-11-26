@@ -3,8 +3,18 @@ import axios from "axios";
 export const options = {
     method: 'GET',
     headers: {
-        'X-RapidAPI-Key': '18cae65599mshc2ae603a38272a2p19e31djsn4718e8d63b0c',
+        'X-RapidAPI-Key': import.meta.env.VITE_RAPID,
         'X-RapidAPI-Host': 'trueway-places.p.rapidapi.com'
+    }
+};
+
+const imageOpts = {
+    method: 'GET',
+    url: 'https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI',
+    params: { q: 'london', pageNumber: '1', pageSize: '10', autoCorrect: 'true' },
+    headers: {
+        'X-RapidAPI-Key': import.meta.env.VITE_RAPID,
+        'X-RapidAPI-Host': 'contextualwebsearch-websearch-v1.p.rapidapi.com'
     }
 };
 

@@ -28,6 +28,8 @@ export const useUserStore = defineStore('user', {
         },
 
         async fetchCurUser() {
+            if( this.token === '' || this.token === null)
+                return null;
             const user: UserInfo | null = await fetchCurUser(this.token);
             this.user = user;
             return user;

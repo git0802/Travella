@@ -21,12 +21,13 @@ watch(
 )
 
 function search() {
-  if (state.searchInput) {
+  if (state.searchInput.trim() !== '') {
+    console.log('searching');
     router.push({
       name: 'search',
       query: {
         q: state.searchInput
-      }
+      },
     });
   }
 }
@@ -68,7 +69,7 @@ onMounted(async () => {
           <div class="flex items-center five:w-fit w-full">
             <div class="px-4 five:w-fit w-full py-2  flex items-center rounded-md bg-mainblue/10">
               <input v-model="state.searchInput" class="text-sm five:w-fit w-full outline-none pr-2" type="text"
-                @onkeyup.enter="search" placeholder="Search">
+                @keyup.enter="search" placeholder="Search">
               <v-icon class="text-mainblue text-base -translate-y-1" icon="fas fa-search" />
             </div>
             <button class="tablet:p-2 tablet:py-2 py-[0.4em] ml-2 rounded-md bg-mainblue/10 px-3">

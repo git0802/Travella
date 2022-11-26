@@ -17,6 +17,11 @@ const router = createRouter({
       path: '/notifications',
       name: 'notifications',
       component: () => import('../views/NotificationView.vue'),
+    }, 
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/SearchView.vue'),
     },
     {
       path: '/account',
@@ -42,7 +47,7 @@ const router = createRouter({
       path: '/login',
       name: 'login',
       component: () => import('../views/LoginView.vue')
-    },{
+    }, {
       path: '/register',
       name: 'register',
       component: () => import('../views/RegisterView.vue')

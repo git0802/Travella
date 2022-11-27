@@ -34,6 +34,11 @@ const router = createRouter({
       component: () => import('../views/AccountView.vue'),
     },
     {
+      path: '/account/:section',
+      name: 'account-secion',
+      component: () => import('../views/AccountView.vue'),
+    },
+    {
       path: "/saved",
       name: "saved",
       component: () => import("../views/LikedView.vue"),

@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full flex bg-gradient-to-l from-white via-white  to-[#dad7dc] min-h-screen  py-3 ">
+    <div class="w-full flex bg-gradient-to-l overflow-hidden h-screen from-white via-white  to-[#dad7dc] min-h-screen  py-3 ">
         <SideBarVue :active="active??'home'" :set-linear="setLinear" />
         <LinearLoader v-if="linear" />
         <slot />

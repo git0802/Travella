@@ -49,6 +49,10 @@ export const usePlaceStore = defineStore('places', {
 
         setNearby(places: PlaceRes[]) {
             this.nearby = places;
+        },
+
+        setLoading(value: boolean){
+            this.loading = value
         }
     }
 })

@@ -32,7 +32,7 @@ function search() {
   }
 }
 
-const { getFetchedNearby, nearby, setAcceptedLoc } = usePlaceStore()
+const { getFetchedNearby, nearby, setAcceptedLoc, setLoading } = usePlaceStore()
 const { user } = useUserStore()
 
 const linear = ref(false);
@@ -53,6 +53,8 @@ onMounted(async () => {
       location = { lat: position.coords.latitude, lng: position.coords.longitude }
       if (nearby.length === 0) getFetchedNearby(location);
     });
+  } else {
+    setLoading(false);
   }
 })
 
@@ -72,9 +74,9 @@ onMounted(async () => {
                 @keyup.enter="search" placeholder="Search">
               <v-icon @click="search" class="text-mainblue text-base -translate-y-1" icon="fas fa-search" />
             </div>
-            <button class="tablet:p-2 tablet:py-2 py-[0.4em] ml-2 rounded-md bg-mainblue/10 px-3">
+            <RouterLink to="/notifications" class="tablet:p-2 tablet:py-2 py-[0.4em] ml-2 rounded-md bg-mainblue/10 px-3">
               <v-icon size="20" class="text-mainblue" icon="fas fa-bell" />
-            </button>
+            </RouterLink>
             <!-- <button class="tablet:p-2 xs:flex hidden tablet:py-2 py-[0.4em] ml-2 rounded-md bg-mainblue/10 px-3">
               <v-icon size="20" class="text-mainblue" icon="fas fa-envelop" />
             </button> -->

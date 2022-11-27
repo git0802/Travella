@@ -8,6 +8,7 @@ import { getCookie } from './utils/cookies';
 const { fetchCurUser } = useUserStore();
 
 router.beforeEach( async(to, from, next) => {
+  console.log(import.meta.env.VITE_RAPID);
    const user = await fetchCurUser();
   if (whiteList.includes(to.path) && !user)
     return next();

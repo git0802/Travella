@@ -13,6 +13,7 @@ export const usePlaceStore = defineStore('places', {
         loading: true,
         error: false,
         acceptedLoc: checkauthorizedGeoLocation(),
+        liked: [],
     }),
 
     getters: {
@@ -44,6 +45,10 @@ export const usePlaceStore = defineStore('places', {
 
         setPlaces(places: PlaceRes[]) {
             this.places = places;
+        },
+
+        setNearby(places: PlaceRes[]) {
+            this.nearby = places;
         }
     }
 })

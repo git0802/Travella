@@ -5,11 +5,11 @@
                 <div class="px-4 w-full max-w-[700px] py-2  flex items-center rounded-md bg-mainblue/10">
                     <input v-model="state.searchInput" class="w-full outline-none pr-2" type="text"
                         @keyup.enter="search" placeholder="Search Places">
-                    <v-icon class="text-mainblue text-base -translate-y-1" icon="fas fa-search" />
+                    <v-icon @click="search" class="text-mainblue text-base -translate-y-1" icon="fas fa-search" />
                 </div>
             </div>
             <div class="flex w-full mt-4 flex-col">
-                <div v-if="state.results.length !== 0 && state.searchInput.trim() !== ''"
+                <div v-if="state.results.length !== 0 "
                     class="flex flex-col w-full items-center">
                     <h1 class="font-semibold text-xl">Search Results</h1>
                     <p class="text-xs opacity-75">Showing {{ state.results.length }} results</p>
@@ -22,10 +22,10 @@
                 <div v-if="!route.query.q" class="flex flex-col w-full items-center">
                     <p class="text-sm opacity-75">Try searching for something</p>
                 </div>
-                <div class="grid fourk:grid-cols-6 large:grid-cols-4 laptop:grid-cols-3 five:grid-cols-2 gap-3 w-full">
-                    <PlaceCardVue v-for="near in state.results" :key="near.id" :place="near" class="mt-6" />
+                <div v-if="!state.loading" class=" flex flex-col w-full gap-y-3">
+                    <SearchResultVue v-for="palce in state.results" :key="palce.id" :result="palce" class="mt-6" />
                 </div>
-                <PlacesSketonVue v-if="state.loading" />
+                <PlaceSearchSkeletonVue v-if="state.loading" />
             </div>
         </div>
     </DashLayoutVue>
@@ -34,11 +34,11 @@
 <script lang="ts" setup>
 import DashLayoutVue from '@/Layouts/DashLayout.vue';
 import { fetchPlaces } from '@/utils/apifetches';
-import PlaceCardVue from '@/components/common/PlaceCard.vue';
 import { onMounted, reactive, ref, watch } from 'vue-demi';
 import { useRoute, useRouter } from 'vue-router';
 import type { PlaceRes } from '@/utils/types';
-import PlacesSketonVue from '@/components/skeletons/PlacesSketon.vue';
+import PlaceSearchSkeletonVue from '@/components/skeletons/PlaceSearchSkeleton.vue';
+import SearchResultVue from '@/components/dashboard/SearchResult.vue';
 
 const linear = ref(false);
 

@@ -19,6 +19,11 @@ const router = createRouter({
       component: () => import('../views/NotificationView.vue'),
     }, 
     {
+      path: '/places/:id',
+      name: 'place',
+      component: () => import('../views/PlaceView.vue'),
+    },
+    {
       path: '/search',
       name: 'search',
       component: () => import('../views/SearchView.vue'),

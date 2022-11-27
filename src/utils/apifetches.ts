@@ -18,7 +18,7 @@ const imageOpts = {
     }
 };
 
-export const fetch = async(url: string, opts?: any) => {
+export const fetch = async (url: string, opts?: any) => {
     const newOptions = { ...options, ...opts };
     const res = await axios.get(url, newOptions);
     return res.data;
@@ -33,5 +33,11 @@ export const fetchPlaces = async (query: string) => {
 export const fetcNearby = async (query: string) => {
     const url = `https://trueway-places.p.rapidapi.com/FindPlacesNearby?location=${query}&radius=50000&language=en`;
     const res = await fetch(url);
+    return res;
+}
+
+export const searchImages = async (query: string) => {
+    const url = `https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/Search/ImageSearchAPI?q=${query}&pageNumber=1&pageSize=10&autoCorrect=true`;
+    const res = await fetch(url, imageOpts);
     return res;
 }

@@ -1,5 +1,5 @@
 <template>
-    <DashLayoutVue :active="`saved`" :linear="linear" :set-linear="setLinear">
+    <DashLayoutVue :active="`saved`" :linear="false">
         <div class="flex w-full p-4 flex-col">
             <h1 class="text-xl font-semibold mx-auto">Liked Places</h1>
             <div v-if="liked.length === 0" class="flex flex-col items-center mt-[20vh]">
@@ -17,16 +17,10 @@
 
 <script lang="ts" setup>
 import DashLayoutVue from '@/Layouts/DashLayout.vue';
-import { ref } from 'vue';
 import { usePlaceStore } from '@/stores/places';
 import { storeToRefs } from 'pinia';
 
 const placesStore = usePlaceStore()
 const { liked } = storeToRefs(placesStore);
 
-const linear = ref(false);
-
-const setLinear = (val: boolean) => {
-    linear.value = val;
-};
 </script>

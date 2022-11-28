@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import DashLayoutVue from '@/Layouts/DashLayout.vue';
 import FeedVue from '@/components/dashboard/Feed.vue';
-import { onMounted, reactive, ref, watch } from 'vue';
+import { onMounted, reactive, watch } from 'vue';
 import { handlePermission, storeAcceptedGeoLocation } from '@/utils/permissions';
 import type { Location } from "@/utils/types";
 import { usePlaceStore } from '@/stores/places';
@@ -35,11 +35,6 @@ function search() {
 const { getFetchedNearby, nearby, setAcceptedLoc, setLoading } = usePlaceStore()
 const { user } = useUserStore()
 
-const linear = ref(false);
-
-const setLinear = (val: boolean) => {
-  linear.value = val;
-};
 
 onMounted(async () => {
   const isLocationGranted = await handlePermission('geolocation');
@@ -60,7 +55,7 @@ onMounted(async () => {
 
 </script>
 <template>
-  <DashLayoutVue :linear="linear" :setLinear="setLinear">
+  <DashLayoutVue :linear="false" :active="`home`" >
     <div class="flex w-full">
       <div class="flex flex-col w-full five:px-6 px-2">
         <div class="flex w-full five:items-center justify-between  five:flex-row flex-col-reverse">

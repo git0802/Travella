@@ -1752,6 +1752,11 @@ core-util-is@~1.0.0:
   resolved "https://registry.yarnpkg.com/core-util-is/-/core-util-is-1.0.3.tgz#a6042d3634c2b27e9328f837b965fac83808db85"
   integrity sha512-ZQBvi1DcpJ4GDqanjucZ2Hj3wEO5pZDS89BWbkcrvdxksJorwUDDZamX9ldFkp9aw2lmBDLgkObEA4DWNJ9FYQ==
 
+country-state-city@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/country-state-city/-/country-state-city-3.1.2.tgz#8b155a1bb17aaf03bac4193382e59c161f74f063"
+  integrity sha512-qpzY7GyzqgJsx5TQUak0ryhbMcn1bLN1mgQc37EWkJMOEbszrAMowjzmisnf8ybhLBnbesZ1LK3KTc7SUX1T1w==
+
 cross-spawn@^6.0.5:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"

@@ -1,12 +1,9 @@
 <template>
-    <DashLayoutVue :active="`places`" :linear="false">
+    <DashLayoutVue :linear="false" :active="`hotels`" >
 
     </DashLayoutVue>
 </template>
 
 <script lang="ts" setup>
-import { useRoute } from 'vue-router';
 import DashLayoutVue from '@/Layouts/DashLayout.vue';
-
-const route = useRoute();
 </script>

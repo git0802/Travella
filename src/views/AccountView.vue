@@ -5,7 +5,6 @@ import { useRoute } from 'vue-router';
 import PersonalInfoVue from '@/components/Account/PersonalInfo.vue';
 
 const route = useRoute();
-const linear = ref(false);
 const active = ref(route.params.section??'');
 watch(
     ()=> route.params,
@@ -18,13 +17,9 @@ watch(
 onMounted(()=> {
     console.log(route.params.section);
 })
-
-const setLinear = (val: boolean) => {
-    linear.value = val;
-};
 </script>
 <template>
-    <DashLayoutVue :active="`account`" :linear="linear" :set-linear="setLinear">
+    <DashLayoutVue :active="`account`" :linear="false" >
         <div class="flex w-full flex-col">
             <div class="w-full h-fit flex px-2 phone:px-6 py-4 shadow-sm">
                 <h1 class="text-lg font-semibold">Your Account</h1>

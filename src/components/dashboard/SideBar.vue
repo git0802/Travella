@@ -35,6 +35,11 @@ const goHome = ()=> router.push('/dashboard')
                     <v-icon size="14" :class="active === 'search' ? 'text-white' : `text`" icon="fas fa-search" />
                     <p class="ml-4 truncate text-sm xtab:flex hidden items-end">Find Places</p>
                 </button>
+                <button @click="() => navigate('/hotels')"
+                    :class="`flex rounded-lg w-fit xtab:w-[unset] hover:bg-active hover:text-white duration-300 mt-1 items-center px-3 py-2 ${active === 'hotels' && 'bg-active text-white'}`">
+                    <v-icon size="14" :class="active === 'hotels' ? 'text-white' : `text`" icon="fas fa-hotel" />
+                    <p class="ml-4 truncate text-sm xtab:flex hidden items-end">Hotels</p>
+                </button>
                 <button @click="() => navigate('/notifications')"
                     :class="`flex rounded-lg w-fit xtab:w-[unset] hover:bg-active hover:text-white duration-300 mt-1 items-center px-3 py-2 ${active === 'notifications' && 'bg-active text-white'}`">
                     <v-icon size="14" :class="active === 'notification' ? 'text-white' : `text`" icon="fas fa-bell" />
@@ -50,11 +55,11 @@ const goHome = ()=> router.push('/dashboard')
                     <v-icon size="14" :class="active === 'account' ? 'text-white' : `text`" icon="fas fa-user" />
                     <p class="ml-4 truncate text-sm xtab:flex hidden items-end">Account</p>
                 </button>
-                <button @click="() => navigate('/settings')"
+                <!-- <button @click="() => navigate('/settings')"
                     :class="`flex rounded-lg w-fit xtab:w-[unset] hover:bg-active hover:text-white duration-300 mt-1 items-center px-3 py-2 ${active === 'settings' && 'bg-active text-white'}`">
                     <v-icon size="14" :class="active === 'settings' ? 'text-white' : `text`" icon="fas fa-sliders-h" />
                     <p class="ml-4 truncate text-sm xtab:flex hidden items-end">Settings</p>
-                </button>
+                </button> -->
             </div>
         </div>
         <div class="flex flex-col">

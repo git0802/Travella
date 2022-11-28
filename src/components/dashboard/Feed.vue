@@ -28,6 +28,7 @@ import PlacesSketonVue from '../skeletons/PlacesSketon.vue';
 // import { computed, ref, watch } from 'vue';
 import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
+import { mixArray } from '@/utils';
 
 const placesStore = usePlaceStore()
 
@@ -35,7 +36,8 @@ const { nearby, acceptedLoc, loading, places } = storeToRefs(placesStore);
 const topPlaces: any = ref([]);
 
 onMounted(() => {
-    const newCopy = [...places.value];
+    let newCopy = [...places.value];
+    newCopy = mixArray(newCopy);
     topPlaces.value = newCopy.splice(0, 4);
 });
 

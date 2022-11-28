@@ -10,11 +10,16 @@
 
 import SideBarVue from '@/components/dashboard/SideBar.vue';
 import LinearLoader from '@/components/common/LinearLoader.vue';
+import { ref } from 'vue';
 
-defineProps<{
+const props = defineProps<{
     active?: string;
     linear?: boolean;
-    setLinear?: (val: boolean) => void;
 }>();
+const linear = ref(props.linear ?? false);
+
+const setLinear = (val: boolean) => {
+    linear.value = val;
+};
 
 </script>

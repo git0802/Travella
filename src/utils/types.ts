@@ -32,3 +32,11 @@ export interface PlaceState {
     acceptedLoc: boolean,
     liked: PlaceRes[],
 }
+
+export interface CityType{
+    name: string;
+    countryCode: string;
+    stateCode: string;
+    latitude: string;
+    longitude: string;
+}

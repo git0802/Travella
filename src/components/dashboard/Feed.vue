@@ -13,6 +13,10 @@
             </div>
             <PlacesSketonVue v-if="loading" />
             <h1 v-if="!acceptedLoc">You have to accept location permision to get nearby places</h1>
+            <h1 v-if="error">An error occured while getting nearby places <button
+                @click="reload"
+                class="text-mainblue"
+                >Reload Page</button></h1>
         </div>
         <div class="flex w-full">
             <div class="flex flex-col">
@@ -31,12 +35,18 @@ import { onMounted, ref } from 'vue';
 import { mixArray } from '@/utils';
 
 const placesStore = usePlaceStore()
-
-const { nearby, acceptedLoc, loading, places } = storeToRefs(placesStore);
+const { setError, setLoading } = placesStore
+const { nearby, acceptedLoc, loading, places, error } = storeToRefs(placesStore);
 const topPlaces: any = ref([]);
+
+const reload = () => {
+    window.location.reload();
+}
 
 onMounted(() => {
     let newCopy = [...places.value];
+    //if(error) setLoading()
+    setError(false)
     newCopy = mixArray(newCopy);
     topPlaces.value = newCopy.splice(0, 4);
 });

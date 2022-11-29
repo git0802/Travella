@@ -35,6 +35,7 @@ export const usePlaceStore = defineStore('places', {
                 return res.results;
             } catch (error) {
                 console.log(error);
+                this.loading = false;
                 this.error = true;
             }
         },
@@ -53,6 +54,10 @@ export const usePlaceStore = defineStore('places', {
 
         setLoading(value: boolean){
             this.loading = value
+        },
+
+        setError(value: boolean) {
+            this.error = value
         }
     }
 })

@@ -6,12 +6,9 @@
         <div @click="toggleMenu" :class="`flex top-0 left-0 bottom-0 fixed right-0 xtab:hidden ${!isMobile&&'hidden'}`"></div>
         <div
             :class="`flex xtab:static absolute xtab:flex-row flex-col items-center justify-between w-full bg-inherit py-11 left-0 ${isMobile ? 'top-0' : '-top-[1000px]'} xtab:py-0 duration-500 px-[5%]`">
-            <div class="logo xtab:static fixed left-[5%] top-6  flex items-center">
-                <h1 class="text-xl font-semibold relative">Travella
-                    <v-icon size="14" class=" text-mainblue absolute right-2 -top-1" icon="fas fa-paper-plane" />
-                </h1>
-                <!-- <v-icon icon="fas fa-home" /> -->
-            </div>
+            <RouterLink to="/"  class="flex cursor-pointer z-[99] fixed left-8 top-4 xtab:static">
+                <img class="w-[80px] mx-auto flex " src="/logo.svg" alt="">
+            </RouterLink>
             <div class="flex items-center xtab:flex-row flex-col xtab:gap-y-0 gap-y-3 xtab:mt-0 mt-4">
                 <RouterLink to="/landing#" class="">
                     About

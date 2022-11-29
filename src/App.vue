@@ -3,29 +3,33 @@ import { RouterView } from 'vue-router'
 import router from './router';
 import { useUserStore } from './stores/user';
 import { whiteList } from './utils';
-import { getCookie } from './utils/cookies';
+import AdaptiveScreenVue from './components/common/AdaptiveScreen.vue';
+import { ref } from 'vue';
 
 const { fetchCurUser } = useUserStore();
+const ready = ref(false);
 
-router.beforeEach( async(to, from, next) => {
+router.beforeEach(async (to, from, next) => {
   console.log(import.meta.env.VITE_RAPID);
-   const user = await fetchCurUser();
+  const user = await fetchCurUser();
+  ready.value = true;
   if (whiteList.includes(to.path) && !user)
     return next();
-  else if(user)
-    if(whiteList.includes(to.path))
+  else if (user)
+    if (whiteList.includes(to.path))
       return next('/dashboard');
     else
       return next();
   else
-    if(!whiteList.includes(to.path))
+    if (!whiteList.includes(to.path))
       return next('/');
-    next();
+  next();
 });
 
 
 </script>
 
 <template>
-  <RouterView />
+  <RouterView v-if="ready" />
+  <AdaptiveScreenVue v-else />
 </template>

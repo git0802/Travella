@@ -38,6 +38,12 @@
                         referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
+            <button
+            class="flex items-center justify-center gap-x-2 bg-mainblue/50 text-mainblue/100 p-2 rounded-lg mt-4 w-fit mx-auto"
+            >
+                <v-icon class="" icon="fa fa-heart" />
+                <span>Save to Favorites</span>
+            </button>
         </div>
     </DashLayoutVue>
 </template>

@@ -45,7 +45,7 @@
                         placeholder="New Passwprd" />
                 </div>
                 <button
-                class="bg-mainblue xtab:mx-auto w-fit px-5 py-2 hover:shadow-md shadow-mainblue text-white"
+                class="bg-mainblue/90 rounded-lg duration-300 hover:bg-mainblue w-fit px-5 py-2 hover:shadow-md shadow-mainblue text-white"
                 >
                     Save Changes
                 </button>

@@ -60,7 +60,7 @@ onMounted(async () => {
       <div class="flex flex-col w-full five:px-6 px-2">
         <div class="flex w-full five:items-center justify-between  five:flex-row flex-col-reverse">
           <div class="flex flex-col five:mt-0 mt-4">
-            <h1 class="font-semibold tablet:text-xl">Hello, {{ user?.names.split(' ')[0] }}</h1>
+            <h1 class="font-semibold tablet:text-xl">Hello, {{ user?.names.split(' ')[0]??'Guest' }}</h1>
             <p class="text-xs opacity-75">Welcome back!</p>
           </div>
           <div class="flex items-center five:w-fit w-full">

@@ -30,6 +30,11 @@
                     <span>Sign in with Google</span>
                 </div>
             </div>
+            <p
+            @click="continueAsGuest"
+             class="mt-4 text-mainblue text-center cursor-pointer w-fit mx-auto">
+                Continue as Guest
+            </p>
             <div className="flex w-full items-center justify-between mt-5">
                 <span>Don't have an account? </span>
                 <RouterLink to="/register" className="text-mainblue underline">Signup</RouterLink>
@@ -43,17 +48,18 @@ import AuthLayoutVue from '@/Layouts/AuthLayout.vue';
 import GoogleVue from '@/components/common/icons/Google.vue'
 import { ref, watch } from "vue";
 import router from '@/router';
-import { RouterLink } from 'vue-router';
+import { RouterLink, useRoute } from 'vue-router';
 import { api } from '@/utils';
 import { setCookie } from '@/utils/cookies';
 import { useUserStore } from '@/stores/user';
 
-const { setUser } = useUserStore()
+const { setUser, handleGuest, continueAsGuest } = useUserStore()
 
 const password = ref('');
 const email = ref('');
 const error = ref('');
 const isLoading = ref(false);
+
 
 watch(
     () => password,
@@ -76,6 +82,7 @@ const onSubmit = async (e: any) => {
         const data = await res.data;
         isLoading.value = false;
         if (data.data) {
+            handleGuest('remove');
             setCookie('access_token', data.data, 365);
             setUser(data.user);
             console.log(data.user);

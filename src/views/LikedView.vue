@@ -11,6 +11,9 @@
                     Search Places
                 </RouterLink>
             </div>
+            <div v-else class="flex w-full flex-col mt-5 gap-y-4">
+                <SearchResultVue v-for="like in liked" :result="like" />
+            </div>
         </div>
     </DashLayoutVue>
 </template>
@@ -19,6 +22,7 @@
 import DashLayoutVue from '@/Layouts/DashLayout.vue';
 import { usePlaceStore } from '@/stores/places';
 import { storeToRefs } from 'pinia';
+import SearchResultVue from '@/components/dashboard/SearchResult.vue';
 
 const placesStore = usePlaceStore()
 const { liked } = storeToRefs(placesStore);

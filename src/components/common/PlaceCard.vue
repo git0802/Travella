@@ -16,35 +16,19 @@
 
 <script lang="ts" setup>
 import type { PlaceRes } from '@/utils/types';
-import { onMounted } from 'vue';
-import { usePlaceStore } from '@/stores/places';
-import { searchImages } from '@/utils/apifetches';
 import { useRouter } from 'vue-router';
+import { useUserStore } from '@/stores/user';
 // get component props
 
-const { setNearby, nearby } = usePlaceStore()
-
+const { user, isGuest } = useUserStore()
 const props = defineProps<{
     place: PlaceRes;
 }>();
-const placeHolder = "http://www.bridgesdb.com/images/bridgesdb/picture-of-rialto-bridge-2011.jpg"
-
-const getPlaceImages = async () => {
-    const data = await searchImages(props.place.name);
-    setNearby(nearby.map((near) => {
-        if (near.id === props.place.id) {
-            return {
-                ...near,
-                images: data.value,
-            };
-        }
-        return near;
-    }));
-}
 
 const router = useRouter();
 
 const navigate = () => {
+    if(!user && !isGuest) return router.push('/login')
     router.push({
         path: `/places/${props.place.id}`,
         query: {

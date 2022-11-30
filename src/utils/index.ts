@@ -26,3 +26,16 @@ export const mixArray = (arr: any[]) => {
     }
     return arr;
 }
+
+
+export const saveToLocal = (key: string, value: any) => {
+    localStorage.setItem(key, JSON.stringify(value))
+}
+
+export const getFromLocal = (key: string) => {
+    return JSON.parse(localStorage.getItem(key) || 'null')
+}
+
+export const removeFromLocal = (key: string) => {
+    localStorage.removeItem(key)
+}

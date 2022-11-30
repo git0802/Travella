@@ -37,8 +37,11 @@
                     <span class="truncate text-sm">Sign in with Google</span>
                 </div>
             </div>
+            <p @click="continueAsGuest" class="mt-4 text-mainblue text-center cursor-pointer w-fit mx-auto">
+                Continue as Guest
+            </p>
             <div className="flex text-sm w-full items-center justify-between mt-5">
-                <span >Don't have an account? </span>
+                <span>Don't have an account? </span>
                 <RouterLink to="/login" className="text-mainblue underline">Login</RouterLink>
             </div>
         </form>
@@ -48,17 +51,22 @@
 <script setup lang="ts">
 import AuthLayoutVue from '@/Layouts/AuthLayout.vue';
 import GoogleVue from '@/components/common/icons/Google.vue'
-import { reactive, ref, watch } from "vue";
-import router from '@/router';
+import { ref, watch } from "vue";
 import { api } from '@/utils';
-import type { AxiosError } from 'axios';
 import { setCookie } from '@/utils/cookies';
+import { useUserStore } from '@/stores/user';
+import { useRoute, useRouter } from 'vue-router';
 
 const password = ref('');
 const email = ref('');
 const names = ref('');
 const error = ref('');
 
+const { handleGuest, continueAsGuest } = useUserStore();
+
+const route = useRoute();
+const router = useRouter();
+const redirect = route.query.redirect as string;
 const isLoading = ref(false);
 
 watch(
@@ -85,11 +93,14 @@ const onSubmit = async (e: any) => {
         isLoading.value = false
         console.log('data', data);
         if (data.data) {
+            handleGuest('remove');
             setCookie('access_token', data.data, 365);
+            if (redirect)
+                return window.location.href = redirect;
             return window.location.href = '/dashboard'
         }
     } catch (err: any) {
-        error.value = err.response.data.message?? 'Something went wrong';
+        error.value = err.response.data.message ?? 'Something went wrong';
         console.log(err);
         isLoading.value = false
     }

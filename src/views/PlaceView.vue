@@ -13,13 +13,14 @@
                         <v-carousel class="h-full max-h-[500px] bg-mainblue/5 w-full" show-arrows-on-hover
                             hide-delimiter-background>
                             <template v-slot:prev="{ props }">
-                                <button @click="props.onClick" class="bg-mainblue/50 text-white p-[0.4em] rounded-full px-2">
+                                <button @click="props.onClick"
+                                    class="bg-mainblue/50 text-white p-[0.4em] rounded-full px-2">
                                     <v-icon class="-translate-y-1" icon="fa fa-chevron-left" />
                                 </button>
                             </template>
                             <template v-slot:next="{ props }"><button @click="props.onClick"
                                     class="bg-mainblue/50 text-white p-[0.4em] px-2 rounded-full">
-                                    <v-icon class="-translate-y-1"  icon="fa fa-chevron-right" @click="props.onClick" />
+                                    <v-icon class="-translate-y-1" icon="fa fa-chevron-right" @click="props.onClick" />
                                 </button>
                             </template>
                             <v-carousel-item class="" v-for="(slide, i) in state.images" :key="i">
@@ -39,10 +40,18 @@
                 </div>
             </div>
             <button
-            class="flex items-center justify-center gap-x-2 bg-mainblue/50 text-mainblue/100 p-2 rounded-lg mt-4 w-fit mx-auto"
-            >
+                v-if="!state.isSaved"
+                @click="savePlace"
+                class="flex items-center justify-center gap-x-2 bg-mainblue/50 text-mainblue/100 p-2 rounded-lg mt-8 w-fit mx-auto">
                 <v-icon class="" icon="fa fa-heart" />
                 <span>Save Place</span>
+            </button>
+            <button
+                @click="unSavePlace"
+                v-else
+                class="flex items-center justify-center gap-x-2 bg-red-600/50 text-red-600/100 p-2 rounded-lg mt-8 w-fit mx-auto">
+                <v-icon class="" icon="fa fa-trash" />
+                <span>Unsave Place</span>
             </button>
         </div>
     </DashLayoutVue>
@@ -53,26 +62,20 @@ import { useRoute, useRouter } from 'vue-router';
 import DashLayoutVue from '@/Layouts/DashLayout.vue';
 import { onMounted, reactive } from 'vue';
 import { searchImages } from '@/utils/apifetches';
+import { usePlaceStore } from '@/stores/places';
+import { storeToRefs } from 'pinia';
+import type { PlaceRes } from '@/utils/types';
+import { saveToLocal } from '@/utils';
 
 const route = useRoute();
 const router = useRouter()
 
+const placeStore = usePlaceStore()
+const { liked } = storeToRefs(placeStore)
+
 const state = reactive({
-    colors: [
-        'indigo',
-        'warning',
-        'pink darken-2',
-        'red lighten-1',
-        'deep-purple accent-4',
-    ],
-    slides: [
-        'First',
-        'Second',
-        'Third',
-        'Fourth',
-        'Fifth',
-    ],
-    images: [] as any[]
+    images: [] as any[],
+    isSaved: false
 })
 
 const { name, address, lat, lng } = route.query
@@ -83,8 +86,46 @@ const getPlaceImages = async () => {
     console.log(data);
 }
 
+const savePlace = () => {
+    if (state.isSaved) return;
+    state.isSaved = true;
+    const place: PlaceRes = {
+        id: route.params.id as string,
+        name: name as string,
+        address: address as string,
+        location: {
+            lat: Number(lat),
+            lng: Number(lng)
+        },
+        images: state.images,
+        price: undefined
+    }
+    saveToLocal('saved', [...liked.value, place])
+    placeStore.setLiked([...liked.value, place])
+}
+
+ const unSavePlace = () => {
+    if (!state.isSaved) return;
+    state.isSaved = false;
+    const place: PlaceRes = {
+        id: route.params.id as string,
+        name: name as string,
+        address: address as string,
+        location: {
+            lat: Number(lat),
+            lng: Number(lng)
+        },
+        images: state.images,
+        price: undefined
+    }
+    placeStore.setLiked(liked.value.filter((p) => p.id !== place.id))
+    saveToLocal('saved', liked.value.filter((p) => p.id !== place.id))
+}
+
 onMounted(() => {
     getPlaceImages();
+    const isSaved = liked.value.find((place: PlaceRes) => place.name === name)
+    if (isSaved) state.isSaved = true;
 })
 
 </script>

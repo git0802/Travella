@@ -4,6 +4,7 @@ import type { Location, PlaceRes } from '@/utils/types';
 import { defineStore } from 'pinia';
 import { checkauthorizedGeoLocation } from '@/utils/permissions';
 import { places } from '@/components/common/data';
+import { getFromLocal } from '@/utils';
 
 export const usePlaceStore = defineStore('places', {
     state: (): PlaceState => ({
@@ -13,7 +14,7 @@ export const usePlaceStore = defineStore('places', {
         loading: true,
         error: false,
         acceptedLoc: checkauthorizedGeoLocation(),
-        liked: [],
+        liked: getFromLocal('saved') || [],
     }),
 
     getters: {
@@ -58,6 +59,9 @@ export const usePlaceStore = defineStore('places', {
 
         setError(value: boolean) {
             this.error = value
-        }
+        },
+         setLiked(places: PlaceRes[]) {
+            this.liked = places;
+        },
     }
 })

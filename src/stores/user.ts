@@ -1,4 +1,4 @@
-import { api } from './../utils/index';
+import { api, getFromLocal, saveToLocal } from './../utils/index';
 import { getCookie } from '@/utils/cookies';
 import { defineStore } from 'pinia';
 import type { UserInfo } from '@/utils/types';
@@ -7,6 +7,7 @@ interface State {
     userList: UserInfo[]
     user: UserInfo | null,
     token: string | null,
+    isGuest: boolean,
 }
 
 export const useUserStore = defineStore('user', {
@@ -14,6 +15,7 @@ export const useUserStore = defineStore('user', {
         userList: [],
         user: null,
         token: getCookie('access_token'),
+        isGuest: getFromLocal('isGuest') ?? false,
     }),
 
     getters: {
@@ -28,8 +30,10 @@ export const useUserStore = defineStore('user', {
         },
 
         async fetchCurUser() {
-            if (this.token === '' || this.token === null)
+            if (this.token === '' || this.token === null) {
+                this.user = null;
                 return null;
+            }
             const user: UserInfo | null = await fetchCurUser(this.token);
             this.user = user;
             return user;
@@ -64,8 +68,28 @@ export const useUserStore = defineStore('user', {
                 return { data: res.data.data, success: true };
             } catch (error: any) {
                 console.log(error);
-                return { error: error.response?.data?.message??'Something went wrong', success: false };
+                return { error: error.response?.data?.message ?? 'Something went wrong', success: false };
             }
+        },
+
+        handleGuest(action: string) {
+            switch (action) {
+                case 'add':
+                    this.isGuest = true;
+                    saveToLocal('isGuest', true);
+                    break;
+                case 'remove':
+                    this.isGuest = false;
+                    localStorage.removeItem('isGuest');
+                    break;
+                default:
+                    break;
+            }
+        },
+
+        continueAsGuest() {
+            this.handleGuest('add');
+            window.location.href = '/dashboard';
         }
     }
 })

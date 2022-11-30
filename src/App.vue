@@ -6,11 +6,10 @@ import { whiteList } from './utils';
 import AdaptiveScreenVue from './components/common/AdaptiveScreen.vue';
 import { ref } from 'vue';
 
-const { fetchCurUser } = useUserStore();
+const { fetchCurUser, isGuest } = useUserStore();
 const ready = ref(false);
 
 router.beforeEach(async (to, from, next) => {
-  console.log(import.meta.env.VITE_RAPID);
   const user = await fetchCurUser();
   ready.value = true;
   if (whiteList.includes(to.path) && !user)
@@ -21,7 +20,7 @@ router.beforeEach(async (to, from, next) => {
     else
       return next();
   else
-    if (!whiteList.includes(to.path))
+    if (!whiteList.includes(to.path) && !isGuest)
       return next('/');
   next();
 });

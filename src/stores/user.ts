@@ -28,14 +28,44 @@ export const useUserStore = defineStore('user', {
         },
 
         async fetchCurUser() {
-            if( this.token === '' || this.token === null)
+            if (this.token === '' || this.token === null)
                 return null;
             const user: UserInfo | null = await fetchCurUser(this.token);
             this.user = user;
             return user;
         },
-        setUser(user: any){
+        setUser(user: any) {
             this.user = user;
+        },
+
+        async updateInfo(info: UserInfo) {
+            this.user = info;
+            try {
+                const res = await api.patch(`/users/${info._id}`, info, {
+                    headers: {
+                        "Authorization": this.token
+                    }
+                });
+                return res.data.data;
+            } catch (error) {
+                console.log(error);
+                return null;
+            }
+        },
+
+        async updatePasword(oldPassword: string, newPassword: string) {
+            try {
+                const res = await api.patch(`/users/user/me/updatepassword`, { oldPassword, newPassword }, {
+                    headers: {
+                        "Authorization": this.token
+                    }
+                });
+                console.log(res);
+                return { data: res.data.data, success: true };
+            } catch (error: any) {
+                console.log(error);
+                return { error: error.response?.data?.message??'Something went wrong', success: false };
+            }
         }
     }
 })
@@ -52,7 +82,7 @@ async function fetchCurUser(token: string | null) {
                 "Authorization": token
             }
         })
-        return res.data.data??null
+        return res.data.data ?? null
     } catch (error) {
         console.log(error);
         return null

@@ -7,19 +7,19 @@
             <h1 class="text-center text-mainblue font-semibold text-lg mt-4">Register to Travella</h1>
             <p class="text-sm text-center">Join the travelling community and explore the world</p>
             <div class="flex flex-col w-full mt-5">
-                <label for="">Full Names</label>
+                <label class="px-2" for="">Full Names</label>
                 <input type="text"
                     class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border-2 border-solid border-mainblue/30 mt-2"
                     v-model="names" placeholder="Your Names" />
             </div>
             <div class="flex flex-col w-full mt-5">
-                <label for="">Email</label>
+                <label class="px-2" for="">Email</label>
                 <input type="email"
                     class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border-2 border-solid border-mainblue/30 mt-2"
                     v-model="email" placeholder="Email" />
             </div>
             <div class="flex flex-col w-full mt-5">
-                <label for="">Password</label>
+                <label class="px-2" for="">Password</label>
                 <input v-model="password" type="password"
                     class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border-2 border-solid border-mainblue/30 mt-2"
                     placeholder="Password" />

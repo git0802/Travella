@@ -6,13 +6,13 @@
             </h1>
             <h1 class="text-center text-mainblue font-semibold text-lg mt-4">Log into Travella</h1>
             <div class="flex flex-col w-full mt-5">
-                <label for="">Email</label>
+                <label class="px-2" for="">Email</label>
                 <input type="email"
                     class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border-2 border-mainblue/30 border-solid mt-2"
                     v-model="email" placeholder="Email" />
             </div>
             <div class="flex flex-col w-full mt-5">
-                <label for="">Password</label>
+                <label class="px-2" for="">Password</label>
                 <input v-model="password" type="password"
                     class="w-full rounded-lg outline-none focus:border-mainblue duration-300 px-4 py-2 border-2 border-mainblue/30 border-solid mt-2"
                     placeholder="Password" />

@@ -10,5 +10,13 @@
     {
       "path": "./tsconfig.vitest.json"
     }
+  ],
+  "exclude": [
+    "dist",
+    "node_modules",
+    "test",
+    "test.ts",
+    "**/*.spec.ts",
+    "**/*.worker.ts"
   ]
 }

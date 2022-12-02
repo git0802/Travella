@@ -6,9 +6,16 @@
             </h1>
             <p class="text-sm mt-8">We always make our customer happy by providing as many choices as possible</p>
             <div class="flex items-center mt-8 text-mainblue gap-x-4">
-                <v-icon icon="fab fa-instagram" />
-                <v-icon size="40" icon="fab fa-facebook" />
-                <v-icon icon="fab fa-twitter" />
+                <a href="https://www.ndungutsecharles.me/" rel="noreferrer" target="_blank">
+                    <v-icon icon="fas fa-globe" />
+                </a>
+                <a href="https://github.com/NdungutseCharles103" rel="noreferrer" target="_blank">
+                    <v-icon size="40" icon="fab fa-github" />
+                </a>
+                <a href="https://www.linkedin.com/in/ishimwe-ndungutse-charles-079418227/" rel="noreferrer"
+                    target="_blank">
+                    <v-icon icon="fab fa-linkedin" />
+                </a>
             </div>
         </div>
         <div class="flex flex-col max-w-[300px] xs:items-start items-center">
@@ -44,10 +51,9 @@
             <div class="flex flex-col mt-8 gap-y-3 xs:items-start items-center">
                 <p class="text-sm">Question or feedback? We'd love to hear from you</p>
                 <div class="flex items-center border-2 p-1 rounded-[2em]">
-                    <input class=" outline-none bg-transparent px-2 text-sm w-full" type="email" placeholder="Email address" name="" id="">
-                    <button
-                        class="bg-mainblue text-white p-2 rounded-3xl text-sm font-semibold"
-                    >
+                    <input class=" outline-none bg-transparent px-2 text-sm w-full" type="email"
+                        placeholder="Email address" name="" id="">
+                    <button class="bg-mainblue text-white p-2 rounded-3xl text-sm font-semibold">
                         <v-icon size="25" icon="fas fa-paper-plane" />
                     </button>
                 </div>

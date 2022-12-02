@@ -11,10 +11,12 @@
     </div>
     <div class="px-[5%] border-t-slate-500/40 border-t-[1px] mt-11">
         <LandFooterVue />
+        <CopyRightsVue />
     </div>
 </div>
 </template>
 
 <script lang="ts" setup>
 import LandFooterVue from '@/components/landing/LandFooter.vue';
+import CopyRightsVue from '@/components/common/CopyRights.vue';
 </script>

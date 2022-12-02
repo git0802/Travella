@@ -1,6 +1,6 @@
 <template>
     <div @click="navigate"
-        class="flex flex-col five:max-w-[350px] max-w-[300px] w-full mx-auto tablet:min-w-[230px] min-w-[180px] cursor-pointer">
+        class="flex flex-col five:max-w-[350px] max-w-[300px] w-full mx-auto tablet:min-w-[330px] min-w-[180px] cursor-pointer">
         <div class="flex relative w-full overflow-hidden rounded-2xl">
             <img v-if="place.images" class="object-cover w-full aspect-[9/6]" :src="place.images[0]" alt="">
             <div v-else class="w-full aspect-[9/6] flex items-center justify-center bg-mainblue/5">
